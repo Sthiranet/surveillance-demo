@@ -1,0 +1,47 @@
+[workspace]
+resolver = "3"
+members = [
+  "crates/sthira-core",
+  "crates/sthira-ledger",
+  "crates/sthira-node",
+  "crates/sthira-verify",
+  "crates/sthira-profile-surveillance",
+  "demo/surveillance-director",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.94"
+license = "UNLICENSED"
+publish = false
+
+[workspace.dependencies]
+sthira-core = { path = "crates/sthira-core" }
+sthira-ledger = { path = "crates/sthira-ledger" }
+sthira-node = { path = "crates/sthira-node" }
+sthira-verify = { path = "crates/sthira-verify" }
+sthira-profile-surveillance = { path = "crates/sthira-profile-surveillance" }
+
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+serde_json_canonicalizer = "0.4"
+sha2 = "0.10"
+ed25519-dalek = "2"
+hex = "0.4"
+rand = "0.9"
+chrono = { version = "0.4", default-features = false, features = ["clock", "std"] }
+thiserror = "2"
+utoipa = { version = "5", features = ["preserve_order"] }
+axum = "0.8"
+tokio = { version = "1", features = ["macros", "rt-multi-thread", "time", "sync", "signal"] }
+tokio-stream = { version = "0.1", features = ["sync"] }
+tower = { version = "0.5", features = ["util"] }
+tower-http = { version = "0.6", features = ["fs"] }
+http-body-util = "0.1"
+proptest = "1"
+
+# Hashing and signing in unoptimised dependencies make the story tests crawl; optimise dependencies
+# (not our own crates) in dev and test builds.
+[profile.dev.package."*"]
+opt-level = 2

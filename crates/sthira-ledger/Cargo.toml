@@ -1,0 +1,17 @@
+[package]
+name = "sthira-ledger"
+description = "Kernel: the ledger interface the node anchors through, plus SimLedger, an in-memory stand-in for Canton"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[dependencies]
+serde.workspace = true
+serde_json.workspace = true
+hex.workspace = true
+rand.workspace = true
+chrono.workspace = true
+thiserror.workspace = true
+utoipa.workspace = true

@@ -1,0 +1,27 @@
+[package]
+name = "surveillance-director"
+description = "Demo only: wires the 3PL, the counterparty and the vendor together in memory, runs the warehouse story, serves the HTTP API and the UI."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[dependencies]
+sthira-core.workspace = true
+sthira-ledger.workspace = true
+sthira-node.workspace = true
+sthira-verify.workspace = true
+sthira-profile-surveillance.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+chrono.workspace = true
+utoipa.workspace = true
+axum.workspace = true
+tokio.workspace = true
+tokio-stream.workspace = true
+tower-http = { workspace = true, features = ["fs", "set-header"] }
+
+[dev-dependencies]
+tower.workspace = true
+http-body-util.workspace = true

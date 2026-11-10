@@ -1,0 +1,21 @@
+[package]
+name = "sthira-core"
+description = "Kernel: the Record/Describe traits a profile implements, RFC 8785 canonical JSON, salted leaves, RFC 6962 Merkle trees, chained heads, inclusion proofs (hashing spec v1). Pure: no I/O."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[dependencies]
+serde.workspace = true
+serde_json.workspace = true
+serde_json_canonicalizer.workspace = true
+sha2.workspace = true
+hex.workspace = true
+rand.workspace = true
+chrono.workspace = true
+utoipa.workspace = true
+
+[dev-dependencies]
+proptest.workspace = true

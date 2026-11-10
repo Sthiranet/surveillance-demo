@@ -1,0 +1,36 @@
+{
+  "name": "sthiranet-surveillance-demo-ui",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Presentation UI for the Sthiranet warehouse video integrity demo. Disposable: holds no verification logic.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "typecheck": "tsc",
+    "preview": "vite preview",
+    "gen:api": "cargo run -q -p surveillance-director -- --openapi > openapi.json && openapi-typescript openapi.json -o src/api/schema.d.ts"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "5.107.1",
+    "openapi-fetch": "0.17.0",
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@vitejs/plugin-react": "6.3.0",
+    "openapi-typescript": "7.13.0",
+    "typescript": "6.0.3",
+    "vite": "8.3.6"
+  },
+  "overrides": {
+    "openapi-typescript": {
+      "typescript": "$typescript"
+    }
+  },
+  "engines": {
+    "node": ">=22.12"
+  }
+}

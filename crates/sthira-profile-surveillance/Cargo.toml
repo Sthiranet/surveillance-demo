@@ -1,0 +1,21 @@
+[package]
+name = "sthira-profile-surveillance"
+description = "Connector layer: the surveillance record profile. Signed 10-second video segment records, the camera signer, synthetic footage and its storage, profile checks and tamper operations."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[dependencies]
+sthira-core.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+sha2.workspace = true
+hex.workspace = true
+rand.workspace = true
+ed25519-dalek.workspace = true
+utoipa.workspace = true
+
+[dev-dependencies]
+proptest.workspace = true

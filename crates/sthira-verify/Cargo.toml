@@ -1,0 +1,18 @@
+[package]
+name = "sthira-verify"
+description = "Node layer: recompute leaves, Merkle roots and chained heads from an off-ledger trail or an evidence package and compare them with anchors on the verifier own ledger copy. Generic over the profile record."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[dependencies]
+sthira-core.workspace = true
+sthira-ledger.workspace = true
+serde.workspace = true
+utoipa.workspace = true
+
+[dev-dependencies]
+proptest.workspace = true
+serde_json.workspace = true

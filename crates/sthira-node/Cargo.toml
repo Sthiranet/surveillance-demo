@@ -1,0 +1,16 @@
+[package]
+name = "sthira-node"
+description = "Node layer: one chain on a participant node. Pending records, batch sealing and anchoring, and the off-ledger store. Generic over the profile record."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[dependencies]
+sthira-core.workspace = true
+sthira-ledger.workspace = true
+serde.workspace = true
+
+[dev-dependencies]
+serde_json.workspace = true

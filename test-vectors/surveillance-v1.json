@@ -1,0 +1,258 @@
+{
+  "spec": "sthiranet surveillance/v1 on hashing v1",
+  "device": {
+    "seed": "0707070707070707070707070707070707070707070707070707070707070707",
+    "public_key": "ea4a6c63e29c520abef5507b132ec5f9954776aebebe7b92421eea691446d22c",
+    "start_ms": 1794297600000
+  },
+  "segments": [
+    {
+      "scene": "empty_aisle",
+      "salt": "a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0",
+      "record": {
+        "v": 1,
+        "profile": "surveillance/v1",
+        "chain": "CAM-DOCK",
+        "camera": {
+          "id": "CAM-DOCK",
+          "site": "WH-PUNE-01",
+          "zone": "dock",
+          "key_id": "ed25519:ea4a6c63e29c520a"
+        },
+        "seq": 1,
+        "start": "2026-11-10T08:00:00.000000Z",
+        "end": "2026-11-10T08:00:10.000000Z",
+        "media": {
+          "codec": "h265",
+          "fps": 25,
+          "frames": 250,
+          "bytes": 4096
+        },
+        "content_hash": "ce7062ce677df1bc28052891f227e6c8593bc8779139348cca82de7d5a628583",
+        "device_sig": "fcccc1c25acfbe92df94fe6e6ae42b77b0b30790a2a94d3471a3c4163ea316591b44919cace6d91fa288d986259759f86874a371f627c7c074c8f534c15a920c"
+      },
+      "signing_payload": "{\"camera\":{\"id\":\"CAM-DOCK\",\"key_id\":\"ed25519:ea4a6c63e29c520a\",\"site\":\"WH-PUNE-01\",\"zone\":\"dock\"},\"chain\":\"CAM-DOCK\",\"content_hash\":\"ce7062ce677df1bc28052891f227e6c8593bc8779139348cca82de7d5a628583\",\"end\":\"2026-11-10T08:00:10.000000Z\",\"media\":{\"bytes\":4096,\"codec\":\"h265\",\"fps\":25,\"frames\":250},\"profile\":\"surveillance/v1\",\"seq\":1,\"start\":\"2026-11-10T08:00:00.000000Z\",\"v\":1}",
+      "canonical": "{\"camera\":{\"id\":\"CAM-DOCK\",\"key_id\":\"ed25519:ea4a6c63e29c520a\",\"site\":\"WH-PUNE-01\",\"zone\":\"dock\"},\"chain\":\"CAM-DOCK\",\"content_hash\":\"ce7062ce677df1bc28052891f227e6c8593bc8779139348cca82de7d5a628583\",\"device_sig\":\"fcccc1c25acfbe92df94fe6e6ae42b77b0b30790a2a94d3471a3c4163ea316591b44919cace6d91fa288d986259759f86874a371f627c7c074c8f534c15a920c\",\"end\":\"2026-11-10T08:00:10.000000Z\",\"media\":{\"bytes\":4096,\"codec\":\"h265\",\"fps\":25,\"frames\":250},\"profile\":\"surveillance/v1\",\"seq\":1,\"start\":\"2026-11-10T08:00:00.000000Z\",\"v\":1}",
+      "leaf": "d9fee7c5a91340fc0f7f80fa9f2d042a7265e1fa6b2a8ed4299dff1f1fd6aa24"
+    },
+    {
+      "scene": "empty_aisle",
+      "salt": "a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1",
+      "record": {
+        "v": 1,
+        "profile": "surveillance/v1",
+        "chain": "CAM-DOCK",
+        "camera": {
+          "id": "CAM-DOCK",
+          "site": "WH-PUNE-01",
+          "zone": "dock",
+          "key_id": "ed25519:ea4a6c63e29c520a"
+        },
+        "seq": 2,
+        "start": "2026-11-10T08:00:10.000000Z",
+        "end": "2026-11-10T08:00:20.000000Z",
+        "media": {
+          "codec": "h265",
+          "fps": 25,
+          "frames": 250,
+          "bytes": 4096
+        },
+        "content_hash": "691910a9f6f17b1b92f1e75ad8115dfd62615319d1873b5244b055a5dc00bad6",
+        "device_sig": "7bd73ad167ec38c9d52c17d18d2011fe21aee0f6f9e6161a4c5e3c3018c582c976e28e09245785ade73d8f11639e84d7293ab7a931c12eca0219e6aaf6571b0c"
+      },
+      "signing_payload": "{\"camera\":{\"id\":\"CAM-DOCK\",\"key_id\":\"ed25519:ea4a6c63e29c520a\",\"site\":\"WH-PUNE-01\",\"zone\":\"dock\"},\"chain\":\"CAM-DOCK\",\"content_hash\":\"691910a9f6f17b1b92f1e75ad8115dfd62615319d1873b5244b055a5dc00bad6\",\"end\":\"2026-11-10T08:00:20.000000Z\",\"media\":{\"bytes\":4096,\"codec\":\"h265\",\"fps\":25,\"frames\":250},\"profile\":\"surveillance/v1\",\"seq\":2,\"start\":\"2026-11-10T08:00:10.000000Z\",\"v\":1}",
+      "canonical": "{\"camera\":{\"id\":\"CAM-DOCK\",\"key_id\":\"ed25519:ea4a6c63e29c520a\",\"site\":\"WH-PUNE-01\",\"zone\":\"dock\"},\"chain\":\"CAM-DOCK\",\"content_hash\":\"691910a9f6f17b1b92f1e75ad8115dfd62615319d1873b5244b055a5dc00bad6\",\"device_sig\":\"7bd73ad167ec38c9d52c17d18d2011fe21aee0f6f9e6161a4c5e3c3018c582c976e28e09245785ade73d8f11639e84d7293ab7a931c12eca0219e6aaf6571b0c\",\"end\":\"2026-11-10T08:00:20.000000Z\",\"media\":{\"bytes\":4096,\"codec\":\"h265\",\"fps\":25,\"frames\":250},\"profile\":\"surveillance/v1\",\"seq\":2,\"start\":\"2026-11-10T08:00:10.000000Z\",\"v\":1}",
+      "leaf": "4be6c8169095537010492245f41168150dd6db597604c30764c01db041df7d48"
+    },
+    {
+      "scene": "empty_aisle",
+      "salt": "a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2",
+      "record": {
+        "v": 1,
+        "profile": "surveillance/v1",
+        "chain": "CAM-DOCK",
+        "camera": {
+          "id": "CAM-DOCK",
+          "site": "WH-PUNE-01",
+          "zone": "dock",
+          "key_id": "ed25519:ea4a6c63e29c520a"
+        },
+        "seq": 3,
+        "start": "2026-11-10T08:00:20.000000Z",
+        "end": "2026-11-10T08:00:30.000000Z",
+        "media": {
+          "codec": "h265",
+          "fps": 25,
+          "frames": 250,
+          "bytes": 4096
+        },
+        "content_hash": "06d9d4a26d6f040333787f3a405823a68d2a60bbe50e888a0e0fb67b4631f2fe",
+        "device_sig": "d0781d50f9d17d9ae1a4de0d121a4374ed50082e5e4e961761c4225feaae6f9efa987f181c2ee221aa15ac46c063a50aa14939d03a28870c5fb108d0332b360b"
+      },
+      "signing_payload": "{\"camera\":{\"id\":\"CAM-DOCK\",\"key_id\":\"ed25519:ea4a6c63e29c520a\",\"site\":\"WH-PUNE-01\",\"zone\":\"dock\"},\"chain\":\"CAM-DOCK\",\"content_hash\":\"06d9d4a26d6f040333787f3a405823a68d2a60bbe50e888a0e0fb67b4631f2fe\",\"end\":\"2026-11-10T08:00:30.000000Z\",\"media\":{\"bytes\":4096,\"codec\":\"h265\",\"fps\":25,\"frames\":250},\"profile\":\"surveillance/v1\",\"seq\":3,\"start\":\"2026-11-10T08:00:20.000000Z\",\"v\":1}",
+      "canonical": "{\"camera\":{\"id\":\"CAM-DOCK\",\"key_id\":\"ed25519:ea4a6c63e29c520a\",\"site\":\"WH-PUNE-01\",\"zone\":\"dock\"},\"chain\":\"CAM-DOCK\",\"content_hash\":\"06d9d4a26d6f040333787f3a405823a68d2a60bbe50e888a0e0fb67b4631f2fe\",\"device_sig\":\"d0781d50f9d17d9ae1a4de0d121a4374ed50082e5e4e961761c4225feaae6f9efa987f181c2ee221aa15ac46c063a50aa14939d03a28870c5fb108d0332b360b\",\"end\":\"2026-11-10T08:00:30.000000Z\",\"media\":{\"bytes\":4096,\"codec\":\"h265\",\"fps\":25,\"frames\":250},\"profile\":\"surveillance/v1\",\"seq\":3,\"start\":\"2026-11-10T08:00:20.000000Z\",\"v\":1}",
+      "leaf": "d03045039bba5f18b86054482cf10b7804d4239bf000cc66611f9953f30c3e7b"
+    },
+    {
+      "scene": "empty_aisle",
+      "salt": "a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3",
+      "record": {
+        "v": 1,
+        "profile": "surveillance/v1",
+        "chain": "CAM-DOCK",
+        "camera": {
+          "id": "CAM-DOCK",
+          "site": "WH-PUNE-01",
+          "zone": "dock",
+          "key_id": "ed25519:ea4a6c63e29c520a"
+        },
+        "seq": 4,
+        "start": "2026-11-10T08:00:30.000000Z",
+        "end": "2026-11-10T08:00:40.000000Z",
+        "media": {
+          "codec": "h265",
+          "fps": 25,
+          "frames": 250,
+          "bytes": 4096
+        },
+        "content_hash": "94000349c41ce7dc6085d166b20c058acf7ec9e8eb15be3537cf97e19db7435b",
+        "device_sig": "c9a1c245105781b09d9e54915a788458e5664b193162c5813f187c967080ce1f7a28584c8d69c9eb23539c7924f3dbee10f24419a4433c3656a3ce51a8995f0d"
+      },
+      "signing_payload": "{\"camera\":{\"id\":\"CAM-DOCK\",\"key_id\":\"ed25519:ea4a6c63e29c520a\",\"site\":\"WH-PUNE-01\",\"zone\":\"dock\"},\"chain\":\"CAM-DOCK\",\"content_hash\":\"94000349c41ce7dc6085d166b20c058acf7ec9e8eb15be3537cf97e19db7435b\",\"end\":\"2026-11-10T08:00:40.000000Z\",\"media\":{\"bytes\":4096,\"codec\":\"h265\",\"fps\":25,\"frames\":250},\"profile\":\"surveillance/v1\",\"seq\":4,\"start\":\"2026-11-10T08:00:30.000000Z\",\"v\":1}",
+      "canonical": "{\"camera\":{\"id\":\"CAM-DOCK\",\"key_id\":\"ed25519:ea4a6c63e29c520a\",\"site\":\"WH-PUNE-01\",\"zone\":\"dock\"},\"chain\":\"CAM-DOCK\",\"content_hash\":\"94000349c41ce7dc6085d166b20c058acf7ec9e8eb15be3537cf97e19db7435b\",\"device_sig\":\"c9a1c245105781b09d9e54915a788458e5664b193162c5813f187c967080ce1f7a28584c8d69c9eb23539c7924f3dbee10f24419a4433c3656a3ce51a8995f0d\",\"end\":\"2026-11-10T08:00:40.000000Z\",\"media\":{\"bytes\":4096,\"codec\":\"h265\",\"fps\":25,\"frames\":250},\"profile\":\"surveillance/v1\",\"seq\":4,\"start\":\"2026-11-10T08:00:30.000000Z\",\"v\":1}",
+      "leaf": "2cb7c6f7b83fd45e2bc57a2b8c422df4e72c4e7ce72f2ecf663e76a66463722d"
+    },
+    {
+      "scene": "empty_aisle",
+      "salt": "a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4",
+      "record": {
+        "v": 1,
+        "profile": "surveillance/v1",
+        "chain": "CAM-DOCK",
+        "camera": {
+          "id": "CAM-DOCK",
+          "site": "WH-PUNE-01",
+          "zone": "dock",
+          "key_id": "ed25519:ea4a6c63e29c520a"
+        },
+        "seq": 5,
+        "start": "2026-11-10T08:00:40.000000Z",
+        "end": "2026-11-10T08:00:50.000000Z",
+        "media": {
+          "codec": "h265",
+          "fps": 25,
+          "frames": 250,
+          "bytes": 4096
+        },
+        "content_hash": "3614ad206ef3ab4807a9bf2e77bf4350a272feca1646430bbb0407b570f2b816",
+        "device_sig": "178555d7bf05be07984dcb53c11685dd9ce07aea42908cada0cf7568e1d8607a4e1247c98ea4fbafedeeae211b80833a8ba74abbe12d40f14c2494a1919ffc0d"
+      },
+      "signing_payload": "{\"camera\":{\"id\":\"CAM-DOCK\",\"key_id\":\"ed25519:ea4a6c63e29c520a\",\"site\":\"WH-PUNE-01\",\"zone\":\"dock\"},\"chain\":\"CAM-DOCK\",\"content_hash\":\"3614ad206ef3ab4807a9bf2e77bf4350a272feca1646430bbb0407b570f2b816\",\"end\":\"2026-11-10T08:00:50.000000Z\",\"media\":{\"bytes\":4096,\"codec\":\"h265\",\"fps\":25,\"frames\":250},\"profile\":\"surveillance/v1\",\"seq\":5,\"start\":\"2026-11-10T08:00:40.000000Z\",\"v\":1}",
+      "canonical": "{\"camera\":{\"id\":\"CAM-DOCK\",\"key_id\":\"ed25519:ea4a6c63e29c520a\",\"site\":\"WH-PUNE-01\",\"zone\":\"dock\"},\"chain\":\"CAM-DOCK\",\"content_hash\":\"3614ad206ef3ab4807a9bf2e77bf4350a272feca1646430bbb0407b570f2b816\",\"device_sig\":\"178555d7bf05be07984dcb53c11685dd9ce07aea42908cada0cf7568e1d8607a4e1247c98ea4fbafedeeae211b80833a8ba74abbe12d40f14c2494a1919ffc0d\",\"end\":\"2026-11-10T08:00:50.000000Z\",\"media\":{\"bytes\":4096,\"codec\":\"h265\",\"fps\":25,\"frames\":250},\"profile\":\"surveillance/v1\",\"seq\":5,\"start\":\"2026-11-10T08:00:40.000000Z\",\"v\":1}",
+      "leaf": "58ae859d947fb05368372b884dc8e220d6ee72c27f8219ca959f0a27ef42278a"
+    },
+    {
+      "scene": "empty_aisle",
+      "salt": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+      "record": {
+        "v": 1,
+        "profile": "surveillance/v1",
+        "chain": "CAM-DOCK",
+        "camera": {
+          "id": "CAM-DOCK",
+          "site": "WH-PUNE-01",
+          "zone": "dock",
+          "key_id": "ed25519:ea4a6c63e29c520a"
+        },
+        "seq": 6,
+        "start": "2026-11-10T08:00:50.000000Z",
+        "end": "2026-11-10T08:01:00.000000Z",
+        "media": {
+          "codec": "h265",
+          "fps": 25,
+          "frames": 250,
+          "bytes": 4096
+        },
+        "content_hash": "42db546b1c4e3723629601b196b00736c4404ccf8a0d296ac41844bc81eb6bf6",
+        "device_sig": "12c3159e45bf94aa95e2f0c0dcf29abe876c3c97d608907d1304aa77ab2846732c008aecf23779605ed2b291378730b4c6d31242d6aff18a9b6b41ec4a03870f"
+      },
+      "signing_payload": "{\"camera\":{\"id\":\"CAM-DOCK\",\"key_id\":\"ed25519:ea4a6c63e29c520a\",\"site\":\"WH-PUNE-01\",\"zone\":\"dock\"},\"chain\":\"CAM-DOCK\",\"content_hash\":\"42db546b1c4e3723629601b196b00736c4404ccf8a0d296ac41844bc81eb6bf6\",\"end\":\"2026-11-10T08:01:00.000000Z\",\"media\":{\"bytes\":4096,\"codec\":\"h265\",\"fps\":25,\"frames\":250},\"profile\":\"surveillance/v1\",\"seq\":6,\"start\":\"2026-11-10T08:00:50.000000Z\",\"v\":1}",
+      "canonical": "{\"camera\":{\"id\":\"CAM-DOCK\",\"key_id\":\"ed25519:ea4a6c63e29c520a\",\"site\":\"WH-PUNE-01\",\"zone\":\"dock\"},\"chain\":\"CAM-DOCK\",\"content_hash\":\"42db546b1c4e3723629601b196b00736c4404ccf8a0d296ac41844bc81eb6bf6\",\"device_sig\":\"12c3159e45bf94aa95e2f0c0dcf29abe876c3c97d608907d1304aa77ab2846732c008aecf23779605ed2b291378730b4c6d31242d6aff18a9b6b41ec4a03870f\",\"end\":\"2026-11-10T08:01:00.000000Z\",\"media\":{\"bytes\":4096,\"codec\":\"h265\",\"fps\":25,\"frames\":250},\"profile\":\"surveillance/v1\",\"seq\":6,\"start\":\"2026-11-10T08:00:50.000000Z\",\"v\":1}",
+      "leaf": "07631242534867f7431be4d4e986b97de61455409df53c2c9ce119b403ea1f90"
+    }
+  ],
+  "batch": {
+    "leaves": [
+      "d9fee7c5a91340fc0f7f80fa9f2d042a7265e1fa6b2a8ed4299dff1f1fd6aa24",
+      "4be6c8169095537010492245f41168150dd6db597604c30764c01db041df7d48",
+      "d03045039bba5f18b86054482cf10b7804d4239bf000cc66611f9953f30c3e7b",
+      "2cb7c6f7b83fd45e2bc57a2b8c422df4e72c4e7ce72f2ecf663e76a66463722d",
+      "58ae859d947fb05368372b884dc8e220d6ee72c27f8219ca959f0a27ef42278a",
+      "07631242534867f7431be4d4e986b97de61455409df53c2c9ce119b403ea1f90"
+    ],
+    "root": "f322c8b04943fe2f008f852995df53f7a0097a910c30923014f499fbbf346737",
+    "proofs": [
+      {
+        "index": 0,
+        "path": [
+          "4be6c8169095537010492245f41168150dd6db597604c30764c01db041df7d48",
+          "34b4cba7756b8c38455eee691b16018535837b6731cb0434528a2ac666243684",
+          "def539e6e6c9415efa4e295b15b1bcfb8ff98e2e365339b2a3a70902e0d52d17"
+        ]
+      },
+      {
+        "index": 1,
+        "path": [
+          "d9fee7c5a91340fc0f7f80fa9f2d042a7265e1fa6b2a8ed4299dff1f1fd6aa24",
+          "34b4cba7756b8c38455eee691b16018535837b6731cb0434528a2ac666243684",
+          "def539e6e6c9415efa4e295b15b1bcfb8ff98e2e365339b2a3a70902e0d52d17"
+        ]
+      },
+      {
+        "index": 2,
+        "path": [
+          "2cb7c6f7b83fd45e2bc57a2b8c422df4e72c4e7ce72f2ecf663e76a66463722d",
+          "3804aaa7905af81a4bdcf777d4ba672ac27566950da68db22b95f6601bcee479",
+          "def539e6e6c9415efa4e295b15b1bcfb8ff98e2e365339b2a3a70902e0d52d17"
+        ]
+      },
+      {
+        "index": 3,
+        "path": [
+          "d03045039bba5f18b86054482cf10b7804d4239bf000cc66611f9953f30c3e7b",
+          "3804aaa7905af81a4bdcf777d4ba672ac27566950da68db22b95f6601bcee479",
+          "def539e6e6c9415efa4e295b15b1bcfb8ff98e2e365339b2a3a70902e0d52d17"
+        ]
+      },
+      {
+        "index": 4,
+        "path": [
+          "07631242534867f7431be4d4e986b97de61455409df53c2c9ce119b403ea1f90",
+          "a1788e027fe498e34479d286d5be1eb21c35df1a489048cb1db6b64679afdeb2"
+        ]
+      },
+      {
+        "index": 5,
+        "path": [
+          "58ae859d947fb05368372b884dc8e220d6ee72c27f8219ca959f0a27ef42278a",
+          "a1788e027fe498e34479d286d5be1eb21c35df1a489048cb1db6b64679afdeb2"
+        ]
+      }
+    ]
+  },
+  "head": {
+    "prev_head": "5d1cceb191c5431bb0a0c946a9ff244a67d5d056c6687d07067ad3b8044f69dc",
+    "root": "f322c8b04943fe2f008f852995df53f7a0097a910c30923014f499fbbf346737",
+    "meta": {
+      "chain": "CAM-DOCK",
+      "seq": 1,
+      "from_pos": "0000000001",
+      "to_pos": "0000000006",
+      "from_time": "2026-11-10T08:00:00.000000Z",
+      "to_time": "2026-11-10T08:01:00.000000Z",
+      "event_count": 6
+    },
+    "canonical_meta": "{\"chain\":\"CAM-DOCK\",\"event_count\":6,\"from_pos\":\"0000000001\",\"from_time\":\"2026-11-10T08:00:00.000000Z\",\"seq\":1,\"to_pos\":\"0000000006\",\"to_time\":\"2026-11-10T08:01:00.000000Z\"}",
+    "head": "73bcbfa5553a9881aa4e3c301fb095d24ed65148dca8972c79cede1461980648"
+  }
+}
