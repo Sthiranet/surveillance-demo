@@ -3,7 +3,7 @@
 A small web app for live presentations. A 3PL warehouse's CCTV footage is fingerprinted per 10-second segment,
 sealed per minute into a Merkle root, and anchored on a ledger co-signed by a counterparty. When a shortage on a
 consignment is disputed, every party can check whether the footage on the 3PL's own servers is **genuine and
-complete**. You do the narration; the app gives you the visuals.
+complete**. 
 
 It shows the three things a signed camera alone cannot do:
 
@@ -13,7 +13,7 @@ It shows the three things a signed camera alone cannot do:
 | **A counterparty witness at capture time** | Scenes 6 and 7: re-signed footage still fails; the 3PL cannot rewrite the ledger alone |
 | **Shared verification without sharing footage** | Scenes 1 and 3: only hashes travel; the vendor verifies from an evidence package |
 
-The demo stops at trust in the footage. It does not decide who is at fault.
+The demo estabilishes integrity of the video, whether it can be trusted or not.
 
 ## The cast
 
@@ -35,8 +35,7 @@ make start           # builds the UI and the server, serves http://localhost:300
 Use a different port with `PORT=4000 make start`. For UI work, `make dev` runs the API on :3000 and Vite
 with hot reload on http://localhost:5173.
 
-The demo opens on a live network at demo time 08:30: thirty minutes of footage per camera, every minute
-anchored. Time is simulated; it advances 10 seconds per recorded segment. **Reset demo** (click twice)
+The demo opens on a live network at demo time 08:30: every minute anchored. The screen shows the last ten minutes (08:20 to 08:30), which is also the default incident window and where the delivery of consignment C-1047 happens. Time is simulated; it advances 10 seconds per recorded segment. **Reset demo** (click twice)
 restores the starting point.
 
 ### Presenting
@@ -50,7 +49,7 @@ The left rail walks the eight scenes in order. Each scene has one or two buttons
 5. **Deletion.** Delete a segment or a whole minute. The gap shows.
 6. **Covering tracks.** Re-sign with the camera's own key, or renumber around a gap. Still caught.
 7. **Rewriting the ledger.** The 3PL tries to archive an anchor alone. Rejected.
-8. **Outcome.** One verdict: can the footage be relied on.
+8. **Outcome.** The verdict: can the footage be relied on.
 
 Click any minute on a timeline, then any of its six segments, to choose where an attack lands.
 **Show cryptographic detail** opens the Merkle tree and anchor of the selected minute, each party's ledger
@@ -93,11 +92,11 @@ demo/
 `cargo tree -p sthira-node -p sthira-verify` shows no profile crate: the node layer sees a record only as
 something that implements `Record` and `Describe`.
 
-This repository was migrated from the audit trail demo. What changed in the shared crates: the finance
+This repository was built in conjuction with the audit trail demo. What changed in the shared crates: the finance
 `Event` left the kernel, `SubsidiaryNode` became `ChainNode<R>`, `verify_trail` became generic, chains are
 created from a `ChainSpec`, and evidence packages were added to `sthira-verify`.
 
-## Share it (free hosting on Render)
+## Hosting (free hosting on Render)
 
 The repo carries a `Dockerfile` (UI + server in one small image) and a `render.yaml` Blueprint for a free
 Render web service.
@@ -128,4 +127,4 @@ To try the image locally:
   32-byte salts, RFC 6962 Merkle trees and inclusion proofs, chained heads (hashing spec v1).
 - **The vendor's evidence** is the package (records, salts, proofs, anchors) plus the clips of the incident
   window only. Outside a dispute nothing but hashes leaves the 3PL.
-- State is in memory and resets when the server restarts.
+- **No Memory Preservence** State is in memory and resets when the server restarts.
