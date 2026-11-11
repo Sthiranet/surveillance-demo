@@ -1,6 +1,7 @@
 // Top bar and network strip: always on screen.
 import { useEffect, useRef, useState } from 'react';
 import type { CounterpartyRole, StateView } from '../api/client';
+import logo from '../assets/logo.png';
 import { hms, plural } from '../ui';
 
 export function TopBar(props: {
@@ -26,7 +27,7 @@ export function TopBar(props: {
   return (
     <header className="topbar">
       <div className="brand">
-        <span className="logo">◆</span>
+        <img className="logo" src={logo} alt="" />
         <span className="brand-name">Sthiranet</span>
         <span className="brand-sub">Warehouse video integrity · live demo</span>
       </div>
