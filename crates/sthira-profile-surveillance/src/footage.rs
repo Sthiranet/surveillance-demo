@@ -43,9 +43,10 @@ impl Scene {
 
 /// The deterministic storyline: what each camera zone shows in each segment.
 ///
-/// The first 30 minutes (segments 1–180) tell the consignment's story: a truck docks at 08:10,
-/// pallets are unloaded, a forklift carries them to the high-value cage, and a dispatch leaves
-/// later. After that the zones cycle through ordinary activity.
+/// The first 30 minutes (segments 1–180) end with the consignment's story, told in the ten minutes
+/// from 08:20 (segments 121–180): a truck docks, pallets are unloaded, a forklift carries them to
+/// the high-value cage, and a dispatch leaves at the end. Before that the aisles are quiet; after
+/// it the zones cycle through ordinary activity.
 pub struct SceneScript;
 
 impl SceneScript {
@@ -54,28 +55,27 @@ impl SceneScript {
         let (story, offset) = match zone {
             "dock" => (
                 match seq {
-                    61..=72 => Some(TruckDocking),
-                    73..=96 => Some(PalletUnloading),
-                    97..=108 => Some(Forklift),
-                    109..=114 => Some(Worker),
+                    121..=132 => Some(TruckDocking),
+                    133..=150 => Some(PalletUnloading),
+                    151..=156 => Some(Forklift),
+                    157..=162 => Some(Worker),
                     _ => None,
                 },
                 0,
             ),
             "cage" => (
                 match seq {
-                    103..=120 => Some(Forklift),
-                    121..=138 => Some(Worker),
+                    151..=162 => Some(Forklift),
+                    163..=174 => Some(Worker),
                     _ => None,
                 },
                 7,
             ),
             _ => (
                 match seq {
-                    31..=42 => Some(Worker),
-                    145..=156 => Some(TruckDocking),
-                    157..=168 => Some(PalletUnloading),
-                    169..=174 => Some(Forklift),
+                    139..=144 => Some(Worker),
+                    163..=174 => Some(TruckDocking),
+                    175..=180 => Some(PalletUnloading),
                     _ => None,
                 },
                 13,
@@ -189,11 +189,12 @@ mod tests {
 
     #[test]
     fn the_storyline_puts_the_delivery_on_the_dock_then_in_the_cage() {
-        assert_eq!(SceneScript::scene("dock", 61), Scene::TruckDocking);
-        assert_eq!(SceneScript::scene("dock", 80), Scene::PalletUnloading);
-        assert_eq!(SceneScript::scene("cage", 110), Scene::Forklift);
+        assert_eq!(SceneScript::scene("dock", 121), Scene::TruckDocking);
+        assert_eq!(SceneScript::scene("dock", 140), Scene::PalletUnloading);
+        assert_eq!(SceneScript::scene("cage", 155), Scene::Forklift);
         assert_eq!(SceneScript::scene("cage", 5), Scene::EmptyAisle);
-        assert_eq!(SceneScript::scene("dispatch", 150), Scene::TruckDocking);
+        assert_eq!(SceneScript::scene("dock", 61), Scene::EmptyAisle);
+        assert_eq!(SceneScript::scene("dispatch", 170), Scene::TruckDocking);
         // Deterministic for any segment number.
         assert_eq!(SceneScript::scene("dock", 9_999), SceneScript::scene("dock", 9_999));
     }

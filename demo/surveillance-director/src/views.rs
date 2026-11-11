@@ -419,7 +419,7 @@ pub struct TamperRequest {
 #[derive(Debug, Clone, Default, Serialize, Deserialize, ToSchema)]
 #[serde(default)]
 pub struct IncidentRequest {
-    /// Window start, RFC 3339 UTC on a minute boundary. Default: the start of the chains.
+    /// Window start, RFC 3339 UTC on a minute boundary. Default: 20 minutes after the start of the chains.
     pub from: Option<String>,
     /// Window end. Default: 30 minutes after the start of the chains.
     pub to: Option<String>,

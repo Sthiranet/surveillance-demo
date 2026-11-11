@@ -27,7 +27,7 @@ fn bad_slots(c: &CamVerdict) -> Vec<(u64, SegmentStatus)> {
     c.segments.iter().filter(|s| s.status != SegmentStatus::Ok).map(|s| (s.seq, s.status)).collect()
 }
 
-/// A fresh network with the incident already raised on the default window (08:00–08:30, all cameras).
+/// A fresh network with the incident already raised on the default window (08:20–08:30, all cameras).
 fn with_incident() -> World {
     let mut w = World::new();
     w.raise_incident(&IncidentRequest::default()).unwrap();
@@ -75,20 +75,20 @@ async fn the_story() {
     let inc = w.raise_incident(&IncidentRequest::default()).unwrap();
     assert_eq!(
         (inc.consignment.as_str(), &inc.from[11..16], &inc.to[11..16], inc.cams.len()),
-        ("C-1047", "08:00", "08:30", 3)
+        ("C-1047", "08:20", "08:30", 3)
     );
 
     // ── Scene 3 · Clean verification: by the counterparty on its own ledger copy… ──
     let v = w.verify(CPTY).unwrap();
     assert!(v.ok, "{}", v.verdict);
-    assert_eq!((v.method, v.anchors_from.as_str(), v.segments_checked), (VerifyMethod::LedgerCopy, CPTY, 540));
+    assert_eq!((v.method, v.anchors_from.as_str(), v.segments_checked), (VerifyMethod::LedgerCopy, CPTY, 180));
     assert!(v.verdict.contains("genuine and complete"));
-    assert!(v.cams.iter().all(|c| c.batches.len() == 30 && c.counts.ok == 180));
+    assert!(v.cams.iter().all(|c| c.batches.len() == 10 && c.counts.ok == 60));
     assert!(cam(&v, CAGE).batches.iter().all(|b| b.root_match && b.head_match && b.count_match));
 
     // …and by the vendor, who has no node: from the evidence package alone.
     let x = w.export().unwrap();
-    assert_eq!((x.segments, x.batches), (540, 90));
+    assert_eq!((x.segments, x.batches), (180, 30));
     let v = w.verify(VENDOR).unwrap();
     assert!(v.ok, "{}", v.verdict);
     assert_eq!((v.method, v.anchors_from.as_str()), (VerifyMethod::EvidencePackage, CPTY));
@@ -102,7 +102,7 @@ async fn the_story() {
         assert!(!v.ok && v.verdict.contains("cannot be relied on"), "{}", v.verdict);
         let c = cam(&v, CAGE);
         assert_eq!(bad_slots(c), [(128, SegmentStatus::Modified)]);
-        assert_eq!(c.verdict, "Footage from 08:00 to 08:30 on CAM-CAGE is not trustworthy: 1 segment modified");
+        assert_eq!(c.verdict, "Footage from 08:20 to 08:30 on CAM-CAGE is not trustworthy: 1 segment modified");
         let s = seg(c, 128);
         assert_eq!(&s.start[11..19], "08:21:10");
         assert_ne!(s.recorded_hash, s.observed_hash);
@@ -113,11 +113,13 @@ async fn the_story() {
     }
 
     // A loop of earlier footage is recognised as a copy, and which footage it copies.
-    tamper(&mut w, DOCK, 100, TamperMode::Replay, false);
-    let v = w.verify(CPTY).unwrap();
-    let s = seg(cam(&v, DOCK), 100);
-    assert_eq!(s.status, SegmentStatus::Replayed);
-    assert!(s.note.as_ref().unwrap().contains("08:13:30"), "{:?}", s.note);
+    tamper(&mut w, DOCK, 150, TamperMode::Replay, false);
+    for verifier in [CPTY, VENDOR] {
+        let v = w.verify(verifier).unwrap();
+        let s = seg(cam(&v, DOCK), 150);
+        assert_eq!(s.status, SegmentStatus::Replayed);
+        assert!(s.note.as_ref().unwrap().contains("08:21:50"), "{:?}", s.note);
+    }
 
     // ── Scene 5 · Deletion: the anchor says six segments existed in that minute. ──
     let mut w = with_incident();
@@ -141,7 +143,7 @@ async fn the_story() {
     assert!(d.contains("08:26:00–08:27:00"), "{d}");
     let v = w.verify(VENDOR).unwrap();
     let c = cam(&v, CAGE);
-    assert_eq!((c.counts.missing, c.counts.ok), (7, 173));
+    assert_eq!((c.counts.missing, c.counts.ok), (7, 53));
     let b = c.batches.iter().find(|b| b.seq == 27).unwrap();
     assert_eq!((b.expected_count, b.present_count), (6, 0));
     assert!(c.verdict.ends_with("7 segments missing"), "{}", c.verdict);
@@ -160,10 +162,10 @@ async fn the_story() {
         assert!(!c.batches.iter().find(|b| b.seq == 22).unwrap().root_match, "but the co-signed root does not move");
     }
     // Renumbering around a deleted segment: every later segment of the minute stops matching.
-    tamper(&mut w, DOCK, 62, TamperMode::Delete, true);
+    tamper(&mut w, DOCK, 122, TamperMode::Delete, true);
     let v = w.verify(CPTY).unwrap();
     let slots = bad_slots(cam(&v, DOCK));
-    assert_eq!(slots.iter().map(|s| s.0).collect::<Vec<_>>(), [62, 63, 64, 65, 66]);
+    assert_eq!(slots.iter().map(|s| s.0).collect::<Vec<_>>(), [122, 123, 124, 125, 126]);
     assert_eq!(slots[4].1, SegmentStatus::Missing);
     assert!(slots[..4].iter().all(|s| s.1 == SegmentStatus::Modified));
 

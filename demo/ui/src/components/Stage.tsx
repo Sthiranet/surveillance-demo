@@ -124,7 +124,7 @@ export function Timelines(props: {
         <div className="tl-track" style={{ gridTemplateColumns: `repeat(${win.minutes.length}, minmax(0, 1fr))` }}>
           {win.minutes.map((m, i) => (
             <span key={m} className="tick">
-              {i % 5 === 0 ? hm(start + m * 60_000) : ''}
+              {win.minutes.length <= 12 || i % 5 === 0 ? hm(start + m * 60_000) : ''}
             </span>
           ))}
         </div>

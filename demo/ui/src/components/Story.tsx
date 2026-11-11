@@ -1,7 +1,7 @@
 // The scene rail: the eight scenes of the story, each with what it proves and the action that plays it.
 import { useState, type ReactNode } from 'react';
 import type { ArchiveAttempt, StateView, TamperMode, Verifier, VerifyResponse } from '../api/client';
-import { MINUTE, type Slot } from '../model';
+import { MINUTE, STORY_END_MINUTES, WINDOW_MINUTES, type Slot } from '../model';
 import { hm, hms, partyName, plural } from '../ui';
 
 export type Actions = {
@@ -80,8 +80,9 @@ function Attack({ c, label, mode, cover = false }: { c: Ctx; label: string; mode
 function IncidentForm({ c }: { c: Ctx }) {
   const start = Date.parse(`${c.s.clock.start.slice(0, 23)}Z`);
   const sealed = Date.parse(`${c.s.clock.sealedTo.slice(0, 23)}Z`);
-  const [from, setFrom] = useState(start);
-  const [to, setTo] = useState(Math.min(start + 30 * MINUTE, sealed));
+  // Default: the ten minutes of the delivery, 08:20 to 08:30.
+  const [to, setTo] = useState(Math.min(start + STORY_END_MINUTES * MINUTE, sealed));
+  const [from, setFrom] = useState(Math.max(start, Math.min(start + STORY_END_MINUTES * MINUTE, sealed) - WINDOW_MINUTES * MINUTE));
   const marks: number[] = [];
   for (let t = start; t <= sealed; t += 5 * MINUTE) marks.push(t);
   return (

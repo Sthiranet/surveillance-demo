@@ -49,6 +49,8 @@ pub const SEGMENTS_PER_BATCH: i64 = 6;
 pub const MINUTE_MS: i64 = SEGMENT_MS * SEGMENTS_PER_BATCH;
 /// Minutes of anchored history the demo opens with.
 pub const SEED_MINUTES: i64 = 30;
+/// Length of the default incident window: the last minutes of that history (08:20–08:30).
+pub const WINDOW_MINUTES: i64 = 10;
 /// Auto-record runs at ×10: one 10-second segment per real second.
 pub const AUTO_INTERVAL: Duration = Duration::from_secs(1);
 /// Auto-record switches itself off after an hour of demo time, so a forgotten tab cannot fill memory.
@@ -532,7 +534,7 @@ impl World {
             Some(t) => parse_ms(t).ok_or_else(|| DemoError::bad(format!("Not a timestamp: {t}"))),
             None => Ok(default),
         };
-        let from = parse(&req.from, self.start_ms)?;
+        let from = parse(&req.from, self.start_ms + (SEED_MINUTES - WINDOW_MINUTES) * MINUTE_MS)?;
         let to = parse(&req.to, self.start_ms + SEED_MINUTES * MINUTE_MS)?;
         if (from - self.start_ms) % MINUTE_MS != 0 || (to - self.start_ms) % MINUTE_MS != 0 {
             return Err(DemoError::bad("The window must start and end on a full minute"));

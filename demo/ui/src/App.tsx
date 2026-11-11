@@ -12,10 +12,10 @@ const sleep = (t: number) => new Promise((r) => setTimeout(r, t));
 
 /** Where each attack scene points by default, as [camera, minutes after the start, segment in that minute]. */
 const SCENE_TARGET: Record<number, [string, number, number]> = {
-  4: ['CAM-CAGE', 21, 1],
-  5: ['CAM-CAGE', 24, 3],
-  6: ['CAM-DOCK', 13, 2],
-  7: ['CAM-CAGE', 21, 1],
+  4: ['CAM-CAGE', 26, 1],
+  5: ['CAM-DOCK', 23, 3],
+  6: ['CAM-DOCK', 21, 2],
+  7: ['CAM-CAGE', 26, 1],
 };
 
 /** Live updates: the server pushes the state version over SSE; any change refetches what is on screen. */

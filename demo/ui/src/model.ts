@@ -3,6 +3,10 @@ import type { SegmentStatus, SegmentVerdict, SegmentView, StateView, VerifyRespo
 import { ms } from './ui';
 
 export const MINUTE = 60_000;
+/** Minutes on screen, and the length of the default incident window. */
+export const WINDOW_MINUTES = 10;
+/** The default incident window ends this many minutes after recording began (the seeded history). */
+export const STORY_END_MINUTES = 30;
 
 /** A 10-second slot on a camera's timeline. `minute` counts from the start of the chain; batch = minute + 1. */
 export type SlotRef = { cam: string; minute: number; index: number };
@@ -20,7 +24,7 @@ export type Slot = SlotRef & {
 
 export type Window = { from: number; to: number; minutes: number[] };
 
-/** The minutes on screen: the incident window once there is one, otherwise the latest half hour. */
+/** The minutes on screen: the incident window once there is one, otherwise the latest ten minutes. */
 export function windowOf(s: StateView): Window {
   const start = ms(s.clock.start);
   let from: number, to: number;
@@ -29,7 +33,7 @@ export function windowOf(s: StateView): Window {
   } else {
     const sealed = ms(s.clock.sealedTo);
     to = ms(s.clock.now) > sealed ? sealed + MINUTE : sealed;
-    from = Math.max(start, to - 30 * MINUTE);
+    from = Math.max(start, to - WINDOW_MINUTES * MINUTE);
   }
   const minutes: number[] = [];
   for (let t = from; t < to; t += MINUTE) minutes.push((t - start) / MINUTE);

@@ -83,7 +83,7 @@ async fn incident_tamper_verify_over_http() {
         call(&r, "POST", "/api/tamper", Some(json!({ "cam": "CAM-CAGE", "seq": 128, "mode": "delete_minute" }))).await;
     assert_eq!(status, StatusCode::OK, "{t}");
     let (_, x) = call(&r, "POST", "/api/export", None).await;
-    assert_eq!(x["segments"], 534);
+    assert_eq!(x["segments"], 174);
     let (_, v) = call(&r, "POST", "/api/verify", Some(json!({ "verifier": "VENDOR" }))).await;
     assert_eq!(
         (&v["ok"], &v["method"], &v["verifierName"]),
@@ -91,11 +91,11 @@ async fn incident_tamper_verify_over_http() {
     );
     let cage = &v["cams"][1];
     assert_eq!((&cage["cam"], &cage["counts"]["missing"]), (&json!("CAM-CAGE"), &json!(6)));
-    assert_eq!(cage["segments"][126]["status"], "missing");
-    assert_eq!(cage["batches"][21]["presentCount"], 0);
+    assert_eq!(cage["segments"][6]["status"], "missing");
+    assert_eq!(cage["batches"][1]["presentCount"], 0);
     let (_, s) = call(&r, "GET", "/api/state", None).await;
     assert_eq!(s["lastVerify"]["ok"], false);
-    assert_eq!(s["export"]["segments"], 534);
+    assert_eq!(s["export"]["segments"], 174);
 }
 
 #[tokio::test]

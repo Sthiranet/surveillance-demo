@@ -448,7 +448,7 @@ export interface components {
         };
         IncidentRequest: {
             /**
-             * @description Window start, RFC 3339 UTC on a minute boundary. Default: the start of the chains.
+             * @description Window start, RFC 3339 UTC on a minute boundary. Default: 20 minutes after the start of the chains.
              * @default null
              */
             from: string | null;
